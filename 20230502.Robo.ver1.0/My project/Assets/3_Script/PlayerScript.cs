@@ -111,8 +111,26 @@ public class PlayerScript : MonoBehaviour
 		
 
 	}
-	
-	void Damaged(float _dam)
+
+    private void OnCollisionEnter(Collision collision) //충돌함수
+    {
+        if (collision.gameObject.CompareTag("Item"))  // 충돌한 객체의 태그가 Item이면
+        {
+            PickUpItem(collision.gameObject);         // PickUpItem()에 충돌한 객체의 정보를 넣기
+        }
+
+    }
+
+
+    private void PickUpItem(GameObject item) //아이템 줍기 함수
+    {
+        // Add the item to the player's inventory or perform any other desired action
+        Destroy(item);							//해당 아이템 파괴
+    }
+
+
+
+    void Damaged(float _dam) //데미지 함수
 	{
 
 
@@ -159,4 +177,10 @@ public class PlayerScript : MonoBehaviour
         Time.timeScale = 1.0f;								//게임 시간 진행 속도를 1.0f (실제 시간과 동기화)
         SceneManager.LoadScene("1_Play");                   //Scene in build 목록의 1_play 장면 불러오기 
     }
+
+
+
+
+
+
 }

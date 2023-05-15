@@ -28,6 +28,7 @@ public class GetItem : MonoBehaviour
         {
             //Debug.Log("플레이어가 " + gameObject.name + " 아이템 획득함.");
 
+
             // 힐팩을 먹었을 경우 플레이어 체력 증가
             //if (gameObject.tag == "Item_Heal")
             //{
@@ -47,6 +48,7 @@ public class GetItem : MonoBehaviour
                 FindObjectOfType<PlayerAttack>().attack += atkUp;
             }*/
 
+
             // 망치를 먹었을 경우 플레이어 공격력 증가
             //else if (gameObject.tag == "Item_Power")
             //{
@@ -55,6 +57,8 @@ public class GetItem : MonoBehaviour
             //    playerAttack.attack += addValue;
             //    GameSceneUIManager.Instance.ChangeAttackValue(playerAttack.attack);
             //}
+
+
             // 돈가방을 먹었을 경우 플레이어 돈 증가
             //else if (gameObject.tag == "Item_Defence")
             //{
@@ -65,6 +69,7 @@ public class GetItem : MonoBehaviour
                 // 플레이어 소지금 UI 갱신
             //    GameSceneUIManager.Instance.ChangeDefenceValue(playerHealth.defence);
             //}
+
 
             // 플레이어가 아이템을 획득하면 아이템이 바로 삭제되도록 설정
             Destroy(gameObject);
