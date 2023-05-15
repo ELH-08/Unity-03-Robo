@@ -9,33 +9,35 @@ public class PlayerScript : MonoBehaviour
 	
 	// Player's basic properties
 	
-	public float _speed;		// player's move speed
+	public float _speed;				// 이동속도
 
-	public float _hp;			// 플레이어 hp
-	public TextMesh _HpVal;		// 플레이어 HP value text
-	public GameObject _hpBar;	// 플레이어 HP bar img
+	public float _hp;					// 플레이어 hp
+	public TextMesh _HpVal;				// 플레이어 HP value text
+	public GameObject _hpBar;			// 플레이어 HP bar img
 	
-    public Animator _rabbit;	// Animator for Player's animation
+    public Animator _rabbit;			// Animator for Player's animation
 	
 	// For Game Result
 	public bool _gameWin;				//게임 승리 
     public bool _playerLive = true;		// bool for player's live
-	public GameObject _uiResult;				// Result UI 객체
-	public TextMeshProUGUI _resultText;			// Result UI 아래 결과를 나타내는 Text (win or lose)
+	public GameObject _uiResult;		// Result UI 객체
+	public TextMeshProUGUI _resultText;	// Result UI 아래 결과를 나타내는 Text (win or lose)
 	
 	public BoxCollider _attackChkCol;   // Boxcollider for on/off when player attack  
                                         //PlayerScript에서 공격이 진행되고 있지 않을 때 망치의 Collider 컴퍼넌트를 비활성화시켜 적의 HP 깎지 않기 하기 위함
 
-    private float _damTimer; // Timer for damage state check
-	public GameObject _DamEffect; // Effect for damage state
-    public GameObject _DamText; // Text Mesh for damage's value
+    private float _damTimer;			// Timer for damage state check
+	public GameObject _DamEffect;		// Effect for damage state
+    public GameObject _DamText;			// Text Mesh for damage's value
 	
 	private float _timerForAttack;
     private float _timerForAttackSnd;
     private bool _attackChkbool;
 
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 		//atakState = _rabbit.StringToHash("0_idle"); 
 		
@@ -58,7 +60,7 @@ public class PlayerScript : MonoBehaviour
 			
 	}
 	
-	// Update is called once per frame
+ 
 	void Update () {
 		if(_playerLive)
 		{
@@ -134,16 +136,16 @@ public class PlayerScript : MonoBehaviour
 		}
 	}
 	
-	public void GameOver()//게임오버 함수
+	public void GameOver() //게임종료 함수
 	{
  
-        if (_gameWin)	//게임에 이겼을 경우
+        if (_gameWin)											//게임에 이겼을 경우
         {
             if(_resultText != null) _resultText.text = "WIN";  //3_Result_Text의 텍스트에 WIN 출력
         }
-        else  //게임에 졌을 경우
+        else													//게임에 졌을 경우
         {
-            if(_resultText != null)_resultText.text = "LOSE"; //3_Result_Text의 텍스트에 LOSE 출력
+            if(_resultText != null)_resultText.text = "Your journey has come to an end..."; //3_Result_Text의 텍스트에 LOSE 출력
         }
         
         //
@@ -152,9 +154,9 @@ public class PlayerScript : MonoBehaviour
 		
 	}
 
-    void ReGame() //화면 재시작 함수
+    void ReGame() //재시작 함수
     {
-        Time.timeScale = 1.0f;				//게임 시간 흐름을 현실과 같게 만들기 
-        SceneManager.LoadScene("1_PlayVer1.8_279_scene");   //씬 매니저의 - 1_play 씬 불러오기 
+        Time.timeScale = 1.0f;								//게임 시간 진행 속도를 1.0f (실제 시간과 동기화)
+        SceneManager.LoadScene("1_Play");                   //Scene in build 목록의 1_play 장면 불러오기 
     }
 }
